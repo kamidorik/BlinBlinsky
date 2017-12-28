@@ -1,0 +1,39 @@
+<style>
+body {
+  padding-top: 80px;
+  text-align: center;
+  background-size: cover;
+}
+h1, h2 {
+  display: inline-block;
+}
+
+</style>
+<canvas id="canvas">а</canvas>
+<script type="text/javascript">
+function getHoursToNewYear() {
+  var now = new Date();
+
+  var tomorrow = new Date(now.getFullYear()+1, 0, 1, 0, 0, 0, 0);
+
+  var diff = tomorrow - now;
+  return Math.round(diff / 3600000);
+}
+
+window.onload = function(){
+    var canvas = document.getElementById("canvas");
+    canvas.width  = 604;
+    canvas.height = 307;
+    var context = canvas.getContext("2d");
+    var imageObj = new Image();
+    var time = new Date();
+    imageObj.src = 'blin.jpg';
+    imageObj.onload = function(){
+        context.drawImage(imageObj, 10, 10);
+        context.font = "40pt Arial";
+        context.fillStyle="#FF0000";
+        time = getHoursToNewYear()
+        context.fillText(time+" часов", 313, 187); 
+    };
+};
+</script>
